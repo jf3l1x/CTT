@@ -6,7 +6,7 @@ using CTT.Models;
 
 namespace CTT.Controllers
 {
-    public class CTTController:RavenController
+    public abstract class CTTController:RavenController
     {
         protected User CurrentUser()
         {

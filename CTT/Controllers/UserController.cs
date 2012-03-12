@@ -5,6 +5,7 @@ using CTT.Models;
 
 namespace CTT.Controllers
 {
+    [Authorize]
     public class UserController : CTTController
     {
         [AdminAuthorize]

@@ -3,7 +3,7 @@
     ViewBag.Title = "Project";
 }
 <h2>Project</h2>
-@using (Html.BeginForm("Save", "Projects", FormMethod.Post))
+@using (Html.BeginForm("Save", "Project", FormMethod.Post))
 {
     @Html.HiddenFor(x => x.Id)
     <label for="Name">Name</label>

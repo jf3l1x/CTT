@@ -34,6 +34,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>CTT/</DeployIisAppPath>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AsyncCtpLibrary">
@@ -298,6 +300,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AdminAuthorize.cs" />
+    <Compile Include="Infrastructure\Indexes\AllowedProjectUsers.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\ItemKeys.cs" />
     <Compile Include="Models\Menu\MenuCreator.cs" />

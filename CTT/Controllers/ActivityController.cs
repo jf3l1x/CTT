@@ -6,7 +6,7 @@ using CTT.Models;
 
 namespace CTT.Controllers
 {
-    [AdminAuthorize]
+    [Authorize]
     public class ActivityController : CTTController
     {
         public ActionResult New()
@@ -16,11 +16,12 @@ namespace CTT.Controllers
         }
         private void PrepareData()
         {
-            ViewBag.Projects = RavenSession.Query<Project>().OrderBy(x => x.Name);
+            ViewBag.Projects = RavenSession.Advanced.LuceneQuery<Project>("AllowedProjectUsers").WhereEquals("UserId", CurrentUser().Id).WaitForNonStaleResults().ToList();
             ViewBag.Services = RavenSession.Query<Service>().OrderBy(x => x.Name);
         }
         public ActionResult Index(string id)
         {
+            var user = CurrentUser();
             if (!string.IsNullOrEmpty(id))
             {
                 var activity = RavenSession.Query<Activity>().FirstOrDefault(x => x.Id == id);
@@ -30,7 +31,7 @@ namespace CTT.Controllers
                     return View("Edit", activity);
                 }
             }
-            return View(RavenSession.Query<Activity>());
+            return View(RavenSession.Query<Activity>().Where(x=>x.UserId==user.Id).OrderByDescending(x=>x.Start).ToList());
         }
         public ActionResult Save(string Id)
         {

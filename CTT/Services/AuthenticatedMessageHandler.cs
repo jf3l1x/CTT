@@ -32,6 +32,7 @@ namespace CTT.Services
                 session.Store(user);
                 session.SaveChanges();
                 OpenIdHelpers.Login(user.Email, user.Email, TimeSpan.FromHours(1), false);
+                
             }
         }
     }

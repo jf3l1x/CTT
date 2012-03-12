@@ -2,10 +2,12 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using CTT.Controllers;
+using CTT.Infrastructure.Indexes;
 using CTT.Services;
 using MvcContrib;
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Indexes;
 
 namespace CTT
 {
@@ -77,6 +79,7 @@ namespace CTT
                                 {
                                     ConnectionStringName = "RavenDB"
                                 }.Initialize();
+            IndexCreation.CreateIndexes(typeof(AllowedProjectUsers).Assembly,DocumentStore);
 
             DocumentStore.Conventions.IdentityPartsSeparator = "-";
             
