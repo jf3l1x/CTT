@@ -1,0 +1,31 @@
+﻿@model IList<CTT.Models.Project>
+
+@{
+    ViewBag.Title = "Projects";
+    
+}
+<h2>Projects</h2>
+<div>
+    @Html.ActionLink("New Project","New")
+</div>
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Client</th>
+        <th>Start</th>
+        <th>End</th>
+    </tr>
+    @{
+        foreach (var project in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(project.Name,"Index",new{project.Id}) </td>
+                <td>@project.Description</td>
+                <td>@project.Client</td>
+                <td>@project.Start</td>
+                <td>@project.End</td>
+            </tr>
+        }
+    }
+</table>

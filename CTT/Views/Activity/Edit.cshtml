@@ -1,0 +1,27 @@
+﻿@model CTT.Models.Activity
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Activity</h2>
+
+@{
+    using (Html.BeginForm("Save", "Activity"))
+    {
+        @Html.HiddenFor(x=>x.Id)
+        <label for="ProjectId">Project</label>
+        @Html.Telerik().ComboBoxFor(x => x.ProjectId).BindTo(new SelectList(ViewBag.Projects, "Id", "Name")).AutoFill(true)<br/>
+        <label for="ServiceId">Service</label>
+        @Html.Telerik().ComboBoxFor(x => x.ServiceId).BindTo(new SelectList(ViewBag.Services, "Id", "Name")).AutoFill(true)<br/>
+        <label for="Start">Start</label>
+        @Html.Telerik().DateTimePickerFor(x=>x.Start)<br/>
+        <label for="End">End</label>
+        @Html.Telerik().DateTimePickerFor(x => x.End)<br/>
+        <label for="Solicitant">Solicitant</label>
+        @Html.TextBoxFor(x=>x.Solicitant)<br/>
+        <label for="Description">Description</label>
+        @Html.TextAreaFor(x=>x.Description,new{style="width:95%;margin-right:auto;height:300px"})<br/>
+        <input type="submit" value="Salvar"/>
+    }
+}
+

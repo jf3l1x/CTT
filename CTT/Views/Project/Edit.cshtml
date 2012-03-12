@@ -1,0 +1,42 @@
+﻿@model CTT.Models.Project
+@{
+    ViewBag.Title = "Project";
+}
+<h2>Project</h2>
+@using (Html.BeginForm("Save", "Projects", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Id)
+    <label for="Name">Name</label>
+    @Html.TextBoxFor(x => x.Name)<br/>
+    <label for="Client">Client</label>
+    @Html.TextBoxFor(x => x.Client)<br/>
+    <label for="Description">Description</label>
+    @Html.TextAreaFor(x => x.Description, new { style = "width:500px;height:75px;" })<br/>
+    <label for="Start">Start</label>
+    @Html.Telerik().DatePickerFor(x => x.Start)<br/>
+    <label for="End">End</label>
+    @Html.Telerik().DatePickerFor(x => x.End)<br/>
+
+    <div>
+        Allowed Users<br/>
+        @{
+            var users = ViewData["users"] as IList<CTT.Models.User>;
+            foreach (var user in users)
+            {
+                if (Model.AllowedUsers.Contains(user.Id))
+                {
+                    <input id="user" name="user" type="checkbox" value="@user.Id" checked/>
+                }
+                else
+                {
+                    <input id="user" name="user" type="checkbox" value="@user.Id"/>
+                }
+                @(string.IsNullOrEmpty(user.NickName) ? user.Email : user.NickName)<br/>    
+
+            }
+        }   
+    </div>
+    
+    
+    <input type="submit" value="Save"/>
+}

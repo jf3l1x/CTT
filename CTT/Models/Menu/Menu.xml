@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <MenuItem ImageURL="" Text="STR_HOME" DestinationURL="~/Activity/Index"/>
+  <MenuItem Text="STR_RECORDS" AdminOnly="true">
+    <MenuItem ImageURL="" Text="STR_PROJETOS" DestinationURL="~/Project/Index" AdminOnly="true"/>
+    <MenuItem ImageURL="" Text="STR_SERVICES" DestinationURL="~/Service/Index" AdminOnly="true"/>
+  </MenuItem>
+  <MenuItem ImageURL="" Text="STR_RELATORIOS" DestinationURL="~/Report/Index" AdminOnly="true"/>
+  <MenuItem Text="STR_USER">
+    <MenuItem ImageURL="" Text="STR_ADMIN" DestinationURL="~/User/List"/>
+    <MenuItem ImageURL="" Text="STR_PROFILE" DestinationURL="~/User/Profile"/>
+    <MenuItem ImageURL="" Text="STR_LOGOFF" DestinationURL="~/OpenId/Logout"/>
+  </MenuItem>
+</Menu>

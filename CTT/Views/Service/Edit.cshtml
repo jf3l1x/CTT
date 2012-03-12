@@ -1,0 +1,19 @@
+﻿@model CTT.Models.Service
+@{
+    ViewBag.Title = "Service";
+}
+
+<h2>Service</h2>
+
+@{
+    using(Html.BeginForm("Save","Service"))
+    {
+        @Html.HiddenFor(x => x.Id)
+        <label for="Name">Name</label>
+        @Html.TextBoxFor(x=>x.Name)<br/>
+        <label for="Description">Description</label>
+        @Html.TextBoxFor(x=>x.Description)<br/>
+        <input type="submit" value="Save"/>
+    
+    }
+}

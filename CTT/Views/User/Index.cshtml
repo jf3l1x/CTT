@@ -1,0 +1,24 @@
+﻿@model CTT.Models.User
+
+@{
+    ViewBag.Title = "User";
+    
+}
+
+<h2>User</h2>
+@{
+    using(Html.BeginForm("Save","User"))
+    {
+        @Html.HiddenFor(x => x.Id)
+        <label for="NickName">NickName</label>
+        @Html.TextBoxFor(x=>x.NickName)<br/>
+        <label for="FullName">FullName</label>
+        @Html.TextBoxFor(x => x.FullName)<br/>
+        if (ViewData["currentUser"] != null && ((CTT.Models.User)ViewData["currentUser"]).IsAdmin)
+        {
+            <label for="IsAdmin">IsAdmin</label>
+            @Html.CheckBoxFor(x => x.IsAdmin)<br/>
+        }
+        <input type="submit" value="Save"/>
+    }
+}

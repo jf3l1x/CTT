@@ -1,0 +1,25 @@
+﻿@model Raven.Client.Linq.IRavenQueryable<CTT.Models.Service>
+
+@{
+    ViewBag.Title = "Services";
+}
+
+<h2>Services</h2>
+@Html.ActionLink("Add New","New") <br/>
+<table style="width:100%">
+    <tr>
+        <th>CMD</th>
+        <th>Name</th>
+        <th>Service</th>
+    </tr>
+    @{
+        foreach (var service in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink("Delete","Delete",new{service.Id})</td>
+                <td>@Html.ActionLink(service.Name,"Index",new{service.Id})</td>
+                <td>@service.Description</td>
+            </tr>
+        }
+    }
+</table>

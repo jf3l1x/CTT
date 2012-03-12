@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTT", "CTT\CTT.csproj", "{A5654E5C-8425-4D5E-9842-C19DF6A7241E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5654E5C-8425-4D5E-9842-C19DF6A7241E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5654E5C-8425-4D5E-9842-C19DF6A7241E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5654E5C-8425-4D5E-9842-C19DF6A7241E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5654E5C-8425-4D5E-9842-C19DF6A7241E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

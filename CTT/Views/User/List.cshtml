@@ -1,0 +1,27 @@
+﻿@model System.Collections.Generic.List<CTT.Models.User>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>Users</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>Email</th>
+        <th>NickName</th>
+        <th>FullName</th>
+        <th>IsAdmin</th>
+    </tr>
+    @{
+        foreach (var user in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(user.Email,"Index",new {user.Id})</td>
+                <td>@user.NickName</td>
+                <td>@user.FullName</td>
+                <td>@user.IsAdmin</td>
+            </tr>
+        }
+    }
+</table>

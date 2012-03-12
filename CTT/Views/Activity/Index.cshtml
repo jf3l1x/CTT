@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CTT.Models.Activity>
+
+@{
+    ViewBag.Title = "Reports";
+    
+}
+
+<h2>Activities</h2>
+<div>
+    @Html.ActionLink("New Activity","New")
+</div>
+<table style="width:100%">
+    <tr>
+        <th>CMD</th>
+        <th>Id</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Project</th>
+        <th>Service</th>
+        <th>Solicitant</th>
+        <th>Descrition</th>
+    </tr>
+    @{
+        foreach (var activity in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink("Delete", "Delete", new { activity.Id }) </td>
+                <td>@Html.ActionLink(activity.Id, "Index", new { activity.Id }) </td>
+                <td>@activity.Start</td>
+                <td>@activity.End</td>
+                <td>@activity.ProjectId</td>
+                <td>@activity.ServiceId</td>
+                <td>@activity.Solicitant</td>
+                <td>@activity.Description</td>
+            </tr>
+        }
+    }
+</table>
