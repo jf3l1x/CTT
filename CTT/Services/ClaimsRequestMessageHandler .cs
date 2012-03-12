@@ -11,6 +11,7 @@ namespace CTT.Services
             message.Claim.FullName = DemandLevel.Require;
             message.Claim.Email = DemandLevel.Require;
             message.Claim.Nickname = DemandLevel.Require;
+            
         }
     }
 }

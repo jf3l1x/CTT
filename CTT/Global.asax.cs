@@ -66,8 +66,7 @@ namespace CTT
             RegisterGlobalFilters(GlobalFilters.Filters);
             InitializeDocumentStore();
             RegisterRoutes(RouteTable.Routes);
-            Bus.AddMessageHandler(typeof (AuthenticatedMessageHandler));
-            Bus.AddMessageHandler(typeof(ClaimsRequestMessageHandler));
+          
             RavenController.DocumentStore = DocumentStore;
         }
 
