@@ -21,7 +21,7 @@ namespace CTT.Controllers
             ViewData["currentUser"] = CurrentUser();
             return View(user);
         }
-
+       
         public ActionResult Profile()
         {
             User user = CurrentUser();
@@ -53,6 +53,7 @@ namespace CTT.Controllers
                         }
                     }
                     entity.IsAdmin = isAdmin;
+                    entity.Comissao = user.Comissao;
                 }
                 RavenSession.Store(entity);
             }

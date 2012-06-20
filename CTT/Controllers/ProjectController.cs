@@ -8,10 +8,25 @@ namespace CTT.Controllers
     [AdminAuthorize]
     public class ProjectController : CTTController
     {
+        private void FillServices(Project p)
+        {
+            var services = RavenSession.Query<Service>().ToList();
+            ViewData["services"] = services;
+            foreach (var service in services)
+            {
+                var preco = p.Precos.FirstOrDefault(x => x.ServicoId == service.Id);
+                if (preco==null)
+                {
+                    p.Precos.Add(new Preco(){ServicoId = service.Id});
+                }
+            }
+        }
         public ActionResult New()
         {
             ViewData["users"] = RavenSession.Query<User>().ToList();
-            return View("Edit", new Project());
+            var p = new Project();
+            FillServices(p);
+            return View("Edit", p);
         }
 
         public ActionResult Index(string id)
@@ -21,9 +36,12 @@ namespace CTT.Controllers
             Project project = RavenSession.Query<Project>().FirstOrDefault(x => x.Id == id);
             if (project != null)
             {
+                FillServices(project);
                 ViewData["users"] = RavenSession.Query<User>().ToList();
                 return View("Edit", project);
+
             }
+
             return HttpNotFound();
         }
         public ActionResult Save(Project project)

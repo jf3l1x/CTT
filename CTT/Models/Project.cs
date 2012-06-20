@@ -8,6 +8,7 @@ namespace CTT.Models
         public Project()
         {
             AllowedUsers=new List<String>();
+            Precos=new List<Preco>();
         }
         public string Id { get; set; }
         public string Client { get; set; }
@@ -16,5 +17,7 @@ namespace CTT.Models
         public DateTime? Start { get; set; }
         public DateTime? End { get; set; }
         public IList<String> AllowedUsers { get; set; }
+        public IList<Preco> Precos { get; set; }
+        
     }
 }

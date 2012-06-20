@@ -1,0 +1,80 @@
+﻿@using CTT.Models
+@model OrdemServico
+
+@{
+    ViewBag.Title = "Ordem de serviço";
+    Layout = "../Shared/_Report.cshtml";
+}
+<img src="../../Content/Images/constant.jpg"/>
+<h2 style="text-align: center;width: 100%">Ordem de serviço</h2>
+<hr/>
+<table width="100%">
+    <tr>
+        <td style="width: 20%">Número</td>
+        <td style="width: 80%">@Model.Id</td>
+    </tr>
+    <tr>
+        <td style="width: 20%">Projeto</td>
+        <td style="width: 80%">@ViewBag.Projeto.Name</td>
+    </tr>
+    <tr>
+        <td style="width: 20%">Data da O.S</td>
+        <td style="width: 80%">@Model.Data.ToString("d")</td>
+    </tr>
+    <tr>
+        <td style="width: 20%">Inicio</td>
+        <td style="width: 80%">@Model.Inicio.ToString("d")</td>
+    </tr>
+    <tr>
+        <td style="width: 20%">Fim</td>
+        <td style="width: 80%">@Model.Fim.ToString("d")</td>
+    </tr>
+    @{
+        var services = ViewData["services"] as IEnumerable<Service>;
+        foreach (var temp in @Model.Totais(services))
+        {
+            <tr>
+                <td style="width: 20%">Total de horas de @temp.Service.Name</td>
+                <td style="width: 80%">@string.Format("{0:0.##}", temp.Tempo.TotalHours)</td>
+            </tr>
+        }
+    }
+
+</table>
+<h3 style="text-align: center;width: 100%">Atividades</h3>
+<hr/>
+@{
+    var users = ViewData["users"] as IList<User>;
+    foreach (var atividade in @Model.Atividades.OrderBy(x=>x.Start))
+    {
+        <table style="width: 100%;margin-left: 20px">
+            <tr>
+                <th>Inicio</th>
+                <th>Fim</th>
+                <th>Consultor</th>
+                <th>Servico</th>
+                <th>Horas</th>
+                <th>Solicitante</th>
+            </tr>
+            <tr>
+                <td>@atividade.Start.Value.ToString()</td>
+                <td>@atividade.End.Value.ToString()</td>
+                <td>@users.First(x=>x.Id==atividade.UserId).NickName</td>
+                <td>@services.First(x=>x.Id==atividade.ServiceId).Name</td>
+                <td>@atividade.TotalTime.TotalHours.ToString("0.##")</td>
+                <td>@atividade.Solicitant</td>
+            </tr>
+        </table>
+        <div style="margin-left: 20px">
+            <p>Descrição da atividade</p>
+            <pre>@atividade.Description</pre>
+        </div>
+    }
+}
+<br/><br/>
+<h4>Aprovacoes</h4>
+<hr style="width: 300px;margin-left: 30px;margin-top: 50px"/>
+<span style="margin-left: 120px">Gerente de Projetos</span>
+
+<hr style="width: 300px;margin-left: 30px;margin-top: 50px"/>
+<span style="margin-left: 120px">Cliente</span>

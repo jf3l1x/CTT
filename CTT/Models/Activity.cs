@@ -25,5 +25,7 @@ namespace CTT.Models
         }
 
         public string Description { get; set; }
+        public string OrdemServicoId { get; set; }
+
     }
 }

@@ -66,7 +66,6 @@ namespace CTT
             RegisterGlobalFilters(GlobalFilters.Filters);
             InitializeDocumentStore();
             RegisterRoutes(RouteTable.Routes);
-          
             RavenController.DocumentStore = DocumentStore;
         }
 

@@ -1,0 +1,40 @@
+﻿@using CTT.Models
+@model IEnumerable<CTT.Models.OrdemServico>
+
+@{
+    ViewBag.Title = "Ordens de serviço";
+    
+}
+
+<h2>Activities</h2>
+<div>
+    @Html.ActionLink("Nova OS","New")
+</div>
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Data</th>
+        <th>Criador</th>
+        <th>Projeto</th>
+        <th>Inicio</th>
+        <th>Fim</th>
+        <th>Aprovado</th>
+    </tr>
+    @{
+        var users = ViewData["users"] as IList<User>;
+        var projetos = ViewData["projetos"] as IList<Project>;
+        foreach (var ordem in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink("Delete", "Delete", new { ordem.Id }) </td>
+                <td>@Html.ActionLink(ordem.Id, "Index", new { ordem.Id }) </td>
+                <td>@ordem.Data</td>
+                <td>@users.First(x=>x.Id==ordem.UserId).NickName</td>
+                <td>@projetos.First(x=>x.Id==ordem.ProjetoId).Name</td>
+                <td>@ordem.Inicio</td>
+                <td>@ordem.Fim</td>
+                <td>@ordem.Aprovado</td>
+            </tr>
+        }
+    }
+</table>

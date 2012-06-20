@@ -1,0 +1,42 @@
+﻿@using CTT.Models
+@model CTT.Models.OrdemServico
+
+@{
+    ViewBag.Title = "Ordem de serviço";
+}
+
+<h2>Criar ordem de serviço</h2>
+@using (Html.BeginForm("Create", "OrdemServico", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Inicio</td>
+            <td>@Html.Telerik().DatePicker().Name("Inicio")</td>
+        </tr>
+        <tr>
+            <td>Fim</td>
+            <td>@Html.Telerik().DatePicker().Name("Fim")</td>
+        </tr>
+        <tr>
+            <td>
+                Projeto
+            </td>
+            <td>@Html.Telerik().ComboBox().Name("ProjectId").BindTo(new SelectList(ViewData["projetos"] as IList<Project>, "Id", "Name")).AutoFill(true)<br/></td>
+        </tr>
+        @{
+            if (ViewData["currentUser"] != null && ((CTT.Models.User) ViewData["currentUser"]).IsAdmin)
+            {
+                var users = ViewData["users"] as IList<User>;
+                foreach (var u in users)
+                {
+                    <tr>
+                        <td colspan="2"> <input id="user" name="user" type="checkbox" value="@u.Id"/> @(string.IsNullOrEmpty(u.NickName) ? u.Email : u.NickName)</td>
+                    </tr>
+                }
+            }
+        }
+         <tr>
+            <td colspan="2" align="right"> <input id="create" type="submit" value="Criar"/> </td>
+        </tr>
+    </table>
+}

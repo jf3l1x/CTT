@@ -291,6 +291,7 @@
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\CTTController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdemServicoController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\RavenController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -302,8 +303,11 @@
     <Compile Include="Infrastructure\AdminAuthorize.cs" />
     <Compile Include="Infrastructure\Indexes\AllowedProjectUsers.cs" />
     <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\Faturamento.cs" />
     <Compile Include="Models\ItemKeys.cs" />
     <Compile Include="Models\Menu\MenuCreator.cs" />
+    <Compile Include="Models\OrdemServico.cs" />
+    <Compile Include="Models\Preco.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\User.cs" />
@@ -517,6 +521,7 @@
     <Content Include="Content\2012.1.214\Windows7\slider-v.gif" />
     <Content Include="Content\2012.1.214\Windows7\sprite-vertical.png" />
     <Content Include="Content\2012.1.214\Windows7\sprite.png" />
+    <Content Include="Content\Images\constant.jpg" />
     <Content Include="Content\themes\base\images\aol.png" />
     <Content Include="Content\themes\base\images\google.png" />
     <Content Include="Content\themes\base\images\logo_openid.png" />
@@ -928,6 +933,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Report\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdemServico\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdemServico\New.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdemServico\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Report.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

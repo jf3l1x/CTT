@@ -120,11 +120,20 @@
   <data name="STR_ADMIN" xml:space="preserve">
     <value>Administrar</value>
   </data>
+  <data name="STR_ALL" xml:space="preserve">
+    <value>Todas</value>
+  </data>
   <data name="STR_HOME" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="STR_LISTAR" xml:space="preserve">
+    <value>Listar</value>
+  </data>
   <data name="STR_LOGOFF" xml:space="preserve">
     <value>Logoff</value>
+  </data>
+  <data name="STR_ORDENS_SERVICO" xml:space="preserve">
+    <value>Ordens de serviço</value>
   </data>
   <data name="STR_PROFILE" xml:space="preserve">
     <value>Perfil</value>

@@ -20,23 +20,43 @@
     <div>
         Allowed Users<br/>
         @{
-            var users = ViewData["users"] as IList<CTT.Models.User>;
-            foreach (var user in users)
-            {
-                if (Model.AllowedUsers.Contains(user.Id))
-                {
+    var users = ViewData["users"] as IList<CTT.Models.User>;
+    foreach (var user in users)
+    {
+        if (Model.AllowedUsers.Contains(user.Id))
+        {
                     <input id="user" name="user" type="checkbox" value="@user.Id" checked/>
-                }
-                else
-                {
+        }
+        else
+        {
                     <input id="user" name="user" type="checkbox" value="@user.Id"/>
-                }
+        }
                 @(string.IsNullOrEmpty(user.NickName) ? user.Email : user.NickName)<br/>    
 
-            }
+    }
         }   
     </div>
-    
+     <div>
+         Preços<br/>
+         <table width="100%">
+             @{
+                var services = ViewData["services"] as IList<CTT.Models.Service>;
+            for (int i=0;i<Model.Precos.Count;i++)
+            {
+                <tr>
+                    <td style="width: 20%;"> 
+                        @Html.HiddenFor(x=>Model.Precos[i].ServicoId)
+                        @services.First(x => x.Id == Model.Precos[i].ServicoId).Name
+                    </td>    
+                    <td style="width: 80%;">@Html.TextBoxFor(x => Model.Precos[i].Valor)</td>
+                </tr>
+                
+                
+                
+            }
+        }   
+        </table>
+     </div>
     
     <input type="submit" value="Save"/>
 }
